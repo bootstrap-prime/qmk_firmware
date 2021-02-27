@@ -39,14 +39,14 @@ float voice_envelope(float frequency) {
         case default_voice:
             glissando      = false;
             note_timbre    = TIMBRE_50;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             break;
 
 #ifdef AUDIO_VOICES
 
         case something:
             glissando      = false;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             switch (compensated_index) {
                 case 0 ... 9:
                     note_timbre = TIMBRE_12;
@@ -68,7 +68,7 @@ float voice_envelope(float frequency) {
 
         case drums:
             glissando      = false;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             // switch (compensated_index) {
             //     case 0 ... 10:
             //         note_timbre = 0.5;
@@ -146,7 +146,7 @@ float voice_envelope(float frequency) {
             break;
         case butts_fader:
             glissando      = true;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             switch (compensated_index) {
                 case 0 ... 9:
                     frequency   = frequency / 4;
@@ -169,7 +169,7 @@ float voice_envelope(float frequency) {
             break;
 
             // case octave_crunch:
-            //     polyphony_rate = 0;
+            //     polyphony_rate = 300;
             //     switch (compensated_index) {
             //         case 0 ... 9:
             //         case 20 ... 24:
@@ -194,7 +194,7 @@ float voice_envelope(float frequency) {
         case duty_osc:
             // This slows the loop down a substantial amount, so higher notes may freeze
             glissando      = true;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             switch (compensated_index) {
                 default:
 #    define OCS_SPEED 10
@@ -209,14 +209,14 @@ float voice_envelope(float frequency) {
 
         case duty_octave_down:
             glissando      = true;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             note_timbre    = (envelope_index % 2) * .125 + .375 * 2;
             if ((envelope_index % 4) == 0) note_timbre = 0.5;
             if ((envelope_index % 8) == 0) note_timbre = 0;
             break;
         case delayed_vibrato:
             glissando      = true;
-            polyphony_rate = 0;
+            polyphony_rate = 300;
             note_timbre    = TIMBRE_50;
 #    define VOICE_VIBRATO_DELAY 150
 #    define VOICE_VIBRATO_SPEED 50
@@ -229,7 +229,7 @@ float voice_envelope(float frequency) {
             }
             break;
             // case delayed_vibrato_octave:
-            //     polyphony_rate = 0;
+            //     polyphony_rate = 300;
             //     if ((envelope_index % 2) == 1) {
             //         note_timbre = 0.55;
             //     } else {
